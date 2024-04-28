@@ -1,16 +1,17 @@
-int		ft_isvalid(char c, int base)
+#include <stdio.h>
+
+int	is_valid_char(char c, int base)
 {
-	char digits[17] = "0123456789abcdef";
-	char digits2[17] = "0123456789ABCDEF";
+	char	*n1 = "0123456789abcdef";
+	char	*n2 = "0123456789ABCDEF";
 
 	while (base--)
-		if (digits[base] == c || digits2[base] == c)
+		if (c == n1[base] || c == n2[base])
 			return (1);
 	return (0);
 }
 
-
-int		ft_value_of(char c)
+int	value(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (c - '0');
@@ -21,15 +22,21 @@ int		ft_value_of(char c)
 	return (0);
 }
 
-int		ft_atoi_base(const char *str, int str_base)
+int	ft_atoi_base(const char *str, int str_base)
 {
-	int result;
-	int sign;
+	int		result = 0;
+	int		sign = (*str == '-') ? -1 : 1;
 
-	result = 0;
-	sign = (*str == '-') ? -1 : 1;
-	(*str == '-' || *str == '+') ? ++str : 0;
-	while (ft_isvalid(*str, str_base))
-		result = result * str_base + ft_value_of(*str++);
+	(*str == '-' || *str == '+') ? str++ : 0;
+	while (is_valid_char(*str, str_base))
+		result =  result * str_base + value(*str++);
 	return (result * sign);
 }
+/*
+int	main()
+{
+	int nbr = ft_atoi_base("13268!", 16);
+	printf("%d\n", nbr);
+	return (0);
+}
+*/
