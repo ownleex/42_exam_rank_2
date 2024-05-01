@@ -1,7 +1,6 @@
-#include <stdlib.h>
 #include "list.h"
 
-void	ft_swap(int *a, int *b)
+void	ft_swap(int	*a, int *b)
 {
 	int	tmp;
 
@@ -10,12 +9,12 @@ void	ft_swap(int *a, int *b)
 	*b = tmp;
 }
 
-t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
+t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
 {
-	t_list	*tmp;
+	t_list *tmp;
 
 	tmp = lst;
-	while (lst->next != NULL)
+	while (lst->next)
 	{
 		if (((*cmp)(lst->data, lst->next->data)) == 0)
 		{
