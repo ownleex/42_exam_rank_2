@@ -1,20 +1,18 @@
 #include <unistd.h>
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
-	char    *s;
+	int	i = 0;
 
-	s = argv[1];
 	if (argc == 2)
 	{
-		while (*s)
+		while (argv[1][i])
 		{
-			if ((*s >= 'A' && *s <= 'Y') || (*s >= 'a' && *s <= 'y'))
-				*s += 1;
-			else if (*s == 'Z' || *s == 'z')
-				*s -= 25; 
-			write(1, &*s, 1);
-			s++;
+			if ((argv[1][i] >= 'a' && argv[1][i] <= 'y') || (argv[1][i] >= 'A' && argv[1][i] <= 'Y'))
+				argv[1][i] += 1;
+			else if (argv[1][i] == 'z'|| argv[1][i] == 'Z')
+				argv[1][i] -= 25;
+			write(1, &argv[1][i++], 1);
 		}
 	}
 	write(1, "\n", 1);
