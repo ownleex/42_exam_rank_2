@@ -2,21 +2,22 @@
 
 void	rev_wstr(char *str)
 {
-	int		start = 0;
-	int		end = 0;
-	int		first_w = 1;
+	int		start		= 0;
+	int		end			= 0;
+	int		is_first	= 1;
 
 	while (str[end])
 		end++;
+	end--;
 	while (end >= 0)
 	{
-		if (first_w == 0)
+		if (is_first == 0)
 			write(1, " ", 1);
-		first_w = 0;
-		while (end >= 0 && (str[end] == ' ' || str[end] == '\0'))
+		is_first = 0;
+		while (end >= 0 && (str[end] == ' ' || str[end] == '\t'))
 			end--;
 		start = end;
-		while (start >= 0 && str[start] != ' ')
+		while (start >= 0 && (str[start] != ' ' && str[start] != '\t'))
 			start--;
 		write(1, &str[start + 1], end - start);
 		end = start;
@@ -30,3 +31,4 @@ int		main(int argc, char **argv)
 	write(1, "\n", 1);
 	return (0);
 }
+
