@@ -1,17 +1,13 @@
-unsigned int	lcm(unsigned int a, unsigned int b)
+unsigned int    lcm(unsigned int a, unsigned int b)
 {
-	int	res = 0;
+	int		lcm = (a >= b) ? a : b;
 
 	if (a == 0 || b == 0)
-		return (res);
-	if (a > b)
-		res = a;
-	else
-		res = b;
+		return (0);
 	while (1)
 	{
-		if (res % a == 0 && res % b == 0)
-			return (res);
-		res++;
+		if (lcm % a == 0 && lcm % b == 0)
+			return (lcm);
+		lcm++;
 	}
 }
