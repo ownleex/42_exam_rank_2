@@ -3,12 +3,18 @@
 void	hidenp(char *s1, char *s2)
 {
 	while (*s2)
-		if(*s1 == *s2++)
+	{
+		if (*s1 == *s2)
 			s1++;
-	*s1 == '\0'? write(1, "1", 1) : write(1, "0", 1);
+		s2++;
+	}
+	if (*s1 == '\0')
+		write(1, "1", 1);
+	else
+		write(1, "0", 1);
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	if (argc == 3)
 		hidenp(argv[1], argv[2]);
