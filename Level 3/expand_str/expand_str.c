@@ -2,23 +2,22 @@
 
 void	expand_str(char *str)
 {
-	int		i		= 0;
-	int		end		= 0;
-
-	while (str[end])
-		end++;
-	while (str[end] == ' ' || str[end] == '\t' || str[end] == '\0')
-		end--;
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	while (str[i] && i <= end)
+	while (*str == ' ' || *str == '\t')
+		str++;
+	if (*str)
 	{
-		if (str[i] != ' ' && str[i] != '\t')
-			write(1, &str[i], 1);
-		if (str[i] == ' ' || str[i] == '\t')
-			if (str[i + 1] && str[i + 1] != ' ' && str[i + 1] != '\t')
-				write(1, "   ", 3);
-		i++;
+		while (*str)
+		{
+			if (*str == ' ' || *str == '\t')
+			{
+				while (*str == ' ' || *str == '\t')
+					str++;
+				if (*str)
+					write(1, "   ", 3);
+			}
+			else
+				write(1, str++, 1);
+		}
 	}
 }
 
