@@ -1,12 +1,9 @@
 #include <unistd.h>
 
-void	ft_print_char(char c, int i)
+void	ft_putnchar(char c, int n)
 {
-	while (i > 0)
-	{
+	while (n-- > 0)
 		write(1, &c, 1);
-		i--;
-	}
 }
 
 void	repeat_alpha(char *str)
@@ -14,9 +11,9 @@ void	repeat_alpha(char *str)
 	while (*str)
 	{
 		if (*str >= 'a' && *str <= 'z')
-			ft_print_char(*str, *str - 96);
+			ft_putnchar(*str, *str - 96);
 		else if (*str >= 'A' && *str <= 'Z')
-			ft_print_char(*str, *str - 64);
+			ft_putnchar(*str, *str - 64);
 		else
 			write(1, str, 1);
 		str++;
