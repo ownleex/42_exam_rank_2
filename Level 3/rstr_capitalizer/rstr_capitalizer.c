@@ -1,6 +1,6 @@
 #include <unistd.h>
 
-void	ft_capitalizer(char *s)
+void	rstr_capitalizer(char *s)
 {
     int	i = -1;
     while (s[++i])
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
     if (ac > 1)
     {
 	while (av[++i])
-	    ft_capitalizer(av[i]);
+	    rstr_capitalizer(av[i]);
     }
     else
 		write(1, "\n", 1);
